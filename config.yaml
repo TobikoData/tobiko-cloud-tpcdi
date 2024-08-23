@@ -1,0 +1,17 @@
+gateways:
+  databricks:
+      connection:
+        type: databricks
+        server_hostname: "{{ env_var('DATABRICKS_TEST_HOST') }}"
+        http_path: "{{ env_var('DATABRICKS_TEST_PATH') }}"
+        access_token: "{{ env_var('DATABRICKS_TEST_TOKEN') }}"
+
+      state_connection:
+          type: cloud
+          url: https://sqlmesh-prod-enterprise-databricks-dev-sefz6ezt4q-uc.a.run.app
+          token: "{{ env_var('TCLOUD_TOKEN') }}"
+
+default_gateway: databricks
+
+model_defaults:
+  dialect: databricks
