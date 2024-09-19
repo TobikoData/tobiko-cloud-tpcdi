@@ -1,17 +1,18 @@
 gateways:
-  databricks:
+  tobiko-cloud:
       connection:
         type: databricks
         server_hostname: "{{ env_var('DATABRICKS_TEST_HOST') }}"
         http_path: "{{ env_var('DATABRICKS_TEST_PATH') }}"
         access_token: "{{ env_var('DATABRICKS_TEST_TOKEN') }}"
+        catalog: tpcdi
 
-      state_connection:
-          type: cloud
-          url: https://sqlmesh-prod-enterprise-databricks-dev-sefz6ezt4q-uc.a.run.app
-          token: "{{ env_var('TCLOUD_TOKEN') }}"
-
-default_gateway: databricks
+default_gateway: tobiko-cloud
 
 model_defaults:
   dialect: databricks
+
+variables:
+  raw_schema: tpcdi_100_dbsql_100
+  catalog: tpcdi
+  

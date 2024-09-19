@@ -1,0 +1,23 @@
+- name: tpcdi.tpcdi_raw_data_100.statustype
+  columns:
+    st_id: string
+    st_name: string
+
+- name: tpcdi.tpcdi_raw_data_100.taxrate
+  columns: 
+    tx_id: string
+    tx_name: string
+    tx_rate: float
+
+- name: tpcdi.tpcdi_raw_data_100.dimtime
+  columns: 
+    sk_timeid: bigint
+    timevalue: string
+    hourid: int
+    hourdesc: string
+    minuteid: int
+    minutedesc: int
+    secondid: int
+    seconddesc: int
+    markethoursflag: boolean
+    officehoursflag: boolean
