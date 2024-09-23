@@ -21,3 +21,396 @@
     seconddesc: int
     markethoursflag: boolean
     officehoursflag: boolean
+
+- name: tpcdi.tpcdi_raw_data_100.AccountIncrementaldos
+  columns: 
+    cdc_flag: string
+    cdc_dsn: bigint
+    accountid: bigint
+    ca_b_id: bigint
+    ca_c_id: bigint
+    accountDesc: string
+    taxstatus: tinyint
+    ca_st_id: string
+
+- name: tpcdi.tpcdi_raw_data_100.AccountIncrementaltres
+  columns:
+    cdc_flag: string
+    cdc_dsn: bigint
+    accountid: bigint
+    ca_b_id: bigint
+    ca_c_id: bigint
+    accountDesc: string
+    taxstatus: tinyint
+    ca_st_id: string
+
+- name: tpcdi.tpcdi_raw_data_100.CashTransactionHistory
+  columns:
+    ct_ca_id: bigint
+    ct_dts: timestamp
+    ct_amt: double
+    ct_name: string
+
+- name: tpcdi.tpcdi_raw_data_100.CashTransactionIncrementaldos
+  columns:
+    cdc_flag: string 
+    cdc_dsn: bigint
+    ct_ca_id: bigint
+    ct_dts: timestamp
+    ct_amt: double
+    ct_name: string
+
+- name: tpcdi.tpcdi_raw_data_100.CashTransactionIncrementaltres
+  columns:
+    cdc_flag: string 
+    cdc_dsn: bigint
+    ct_ca_id: bigint
+    ct_dts: timestamp
+    ct_amt: double
+    ct_name: string 
+
+- name: tpcdi.tpcdi_raw_data_100.customerincrementaldos
+  columns:
+    cdc_flag: string
+    cdc_dsn: bigint
+    customerid: bigint
+    taxid: string
+    status: string
+    lastname: string
+    firstname: string
+    middleinitial: string
+    gender: string
+    tier: tinyint
+    dob: date
+    addressline1: string
+    addressline2: string
+    postalcode: string
+    city: string
+    stateprov: string
+    country: string
+    c_ctry_1: string
+    c_area_1: string
+    c_local_1: string
+    c_ext_1: string
+    c_ctry_2: string
+    c_area_2: string
+    c_local_2: string
+    c_ext_2: string
+    c_ctry_3: string
+    c_area_3: string
+    c_local_3: string
+    c_ext_3: string
+    email1: string
+    email2: string
+    lcl_tx_id: string
+    nat_tx_id: string
+
+- name: tpcdi.tpcdi_raw_data_100.customerincrementaltres
+  columns:
+    cdc_flag: string
+    cdc_dsn: bigint
+    customerid: bigint
+    taxid: string
+    status: string
+    lastname: string
+    firstname: string
+    middleinitial: string
+    gender: string
+    tier: tinyint
+    dob: date
+    addressline1: string
+    addressline2: string
+    postalcode: string
+    city: string
+    stateprov: string
+    country: string
+    c_ctry_1: string
+    c_area_1: string
+    c_local_1: string
+    c_ext_1: string
+    c_ctry_2: string
+    c_area_2: string
+    c_local_2: string
+    c_ext_2: string
+    c_ctry_3: string
+    c_area_3: string
+    c_local_3: string
+    c_ext_3: string
+    email1: string
+    email2: string
+    lcl_tx_id: string
+    nat_tx_id: string
+  
+- name: tpcdi.tpcdi_raw_data_100.DailyMarketHistorical
+  columns:
+    dm_date: date
+    dm_s_symb: string
+    dm_close: double
+    dm_high: double
+    dm_low: double
+    dm_vol: int
+
+- name: tpcdi.tpcdi_raw_data_100.DailyMarketIncrementaldos
+  columns:
+    cdc_flag: string
+    cdc_dsn: bigint
+    dm_date: date
+    dm_s_symb: string
+    dm_close: double
+    dm_high: double
+    dm_low: double
+    dm_vol: int
+  
+- name: tpcdi.tpcdi_raw_data_100.DailyMarketIncrementaltres
+  columns:
+    cdc_flag: string
+    cdc_dsn: bigint
+    dm_date: date
+    dm_s_symb: string
+    dm_close: double
+    dm_high: double
+    dm_low: double
+    dm_vol: int
+
+- name: tpcdi.tpcdi_raw_data_100.dimdate
+  columns:
+    sk_dateid: bigint
+    datevalue: date
+    datedesc: string
+    calendaryearid: int
+    calendaryeardesc: string
+    calendarqtrid: int
+    calendarqtrdesc: string
+    calendarmonthid: int
+    calendarmonthdesc: string
+    calendarweekid: int
+    calendarweekdesc: string
+    dayofweeknum: int
+    dayofweekdesc: string
+    fiscalyearid: int
+    fiscalyeardesc: string
+    fiscalqtrid: int
+    fiscalqtrdesc: string
+    holidayflag: boolean
+
+- name: tpcdi.tpcdi_raw_data_100.HR
+  columns:
+    employeeid: string
+    managerid: string
+    employeefirstname: string
+    employeelastname: string
+    employeemi: string  
+    employeejobcode: string
+    employeebranch: string
+    employeeoffice: string
+    employeephone: string
+
+- name: tpcdi.tpcdi_raw_data_100.HoldingHistory
+  columns:
+    hh_h_t_id: int
+    hh_t_id: int
+    hh_before_qty: int
+    hh_after_qty: int
+
+- name: tpcdi.tpcdi_raw_data_100.HoldingIncrementaldos
+  columns:
+    cdc_flag: string
+    cdc_dsn: bigint
+    hh_h_t_id: int
+    hh_t_id: int
+    hh_before_qty: int
+    hh_after_qty: int
+
+- name: tpcdi.tpcdi_raw_data_100.HoldingIncrementaltres
+  columns:
+    cdc_flag: string
+    cdc_dsn: bigint
+    hh_h_t_id: int
+    hh_t_id: int
+    hh_before_qty: int
+    hh_after_qty: int
+
+- name: tpcdi.tpcdi_raw_data_100.BatchDateuno
+  columns:
+    batchdate: date
+
+- name: tpcdi.tpcdi_raw_data_100.BatchDatetres
+  columns:
+    batchdate: date
+
+- name: tpcdi.tpcdi_raw_data_100.Industry
+  columns:
+    in_id: string
+    in_name: string
+    in_sc_id: string
+
+- name: tpcdi.tpcdi_raw_data_100.TradeHistory
+  columns:
+    t_id: bigint
+    t_dts: timestamp
+    t_st_id: string
+    t_tt_id: string
+    t_is_cash: tinyint
+    t_s_symb: string
+    t_qty: int
+    t_bid_price: double
+    t_ca_id: bigint
+    t_exec_name: string
+    t_trade_price: double
+    t_chrg: double
+    t_comm: double
+    t_tax: double
+
+- name: tpcdi.tpcdi_raw_data_100.TradeHistoryRaw
+  columns:
+    th_t_id: bigint
+    th_dts: timestamp
+    th_st_id: string
+
+- name: tpcdi.tpcdi_raw_data_100.TradeInrementaldos
+  columns:
+    cdc_flag: string
+    cdc_dsn: bigint
+    t_id: bigint
+    t_dts: timestamp
+    t_st_id: string
+    t_tt_id: string
+    t_is_cash: tinyint
+    t_s_symb: string
+    t_qty: int
+    t_bid_price: double
+    t_ca_id: bigint
+    t_exec_name: string
+    t_trade_price: double
+    t_chrg: double
+    t_comm: double
+    t_tax: double
+
+- name: tpcdi.tpcdi_raw_data_100.TradeInrementaltres
+  columns:
+    cdc_flag: string
+    cdc_dsn: bigint
+    t_id: bigint
+    t_dts: timestamp
+    t_st_id: string
+    t_tt_id: string
+    t_is_cash: tinyint
+    t_s_symb: string
+    t_qty: int
+    t_bid_price: double
+    t_ca_id: bigint
+    t_exec_name: string
+    t_trade_price: double
+    t_chrg: double
+    t_comm: double
+    t_tax: double
+
+- name: tpcdi.tpcdi_raw_data_100.TradeType
+  columns:
+    tt_id: string
+    tt_name: string
+    tt_is_sell: int
+    tt_is_mrkt: int
+
+- name: tpcdi.tpcdi_raw_data_100.WatchIncrementaldos
+  columns:
+    cdc_flag: string
+    cdc_dsn: bigint
+    w_c_id: bigint
+    w_s_symb: string
+    w_dts: timestamp
+    w_action: string
+
+- name: tpcdi.tpcdi_raw_data_100.WatchIncrementaltres
+  columns:
+    cdc_flag: string
+    cdc_dsn: bigint
+    w_c_id: bigint
+    w_s_symb: string
+    w_dts: timestamp
+    w_action: string
+
+- name: tpcdi.tpcdi_raw_data_100.WatchHistory
+  columns:
+    w_c_id: bigint
+    w_s_symb: string
+    w_dts: timestamp
+    w_action: string
+
+- name: tpcdi.tpcdi_raw_data_100.FinWireStg
+  columns:
+
+- name: tpcdi.tpcdi_raw_data_100.ProspectRawuno
+  columns:
+    agencyid: string
+    lastname: string
+    firstname: string
+    middleinitial: string
+    gender: string
+    addressline1: string
+    addressline2: string
+    postalcode: string
+    city: string
+    state: string
+    country: string
+    phone: string
+    income: string
+    numbercars: int
+    numberchildren: int
+    maritalstatus: string
+    age: int
+    creditrating: int
+    ownorrentflag: string
+    employer: string
+    numbercreditcards: int
+    networth: int
+
+- name: tpcdi.tpcdi_raw_data_100.ProspectRawdos
+  columns:
+    agencyid: string
+    lastname: string
+    firstname: string
+    middleinitial: string
+    gender: string
+    addressline1: string
+    addressline2: string
+    postalcode: string
+    city: string
+    state: string
+    country: string
+    phone: string
+    income: string
+    numbercars: int
+    numberchildren: int
+    maritalstatus: string
+    age: int
+    creditrating: int
+    ownorrentflag: string
+    employer: string
+    numbercreditcards: int
+    networth: int
+
+- name: tpcdi.tpcdi_raw_data_100.ProspectRawtres
+  columns:
+    agencyid: string
+    lastname: string
+    firstname: string
+    middleinitial: string
+    gender: string
+    addressline1: string
+    addressline2: string
+    postalcode: string
+    city: string
+    state: string
+    country: string
+    phone: string
+    income: string
+    numbercars: int
+    numberchildren: int
+    maritalstatus: string
+    age: int
+    creditrating: int
+    ownorrentflag: string
+    employer: string
+    numbercreditcards: int
+    networth: int
