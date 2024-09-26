@@ -95,8 +95,8 @@ FROM (
             WHEN (t_st_id == "SBMT" AND t_tt_id IN ("TMB", "TMS")) OR t_st_id = "PNDG" THEN TRUE 
             WHEN t_st_id IN ("CMPT", "CNCL") THEN FALSE 
             ELSE cast(null as boolean) END AS create_flg
-        FROM {{ source('tpcdi', 'v_trade') }} t
-        JOIN {{ source('tpcdi', 'v_tradehistory') }} th
+        FROM tpcdi.tpcdi_100_dbsql_100_stage.v_trade t
+        JOIN tpcdi.tpcdi_100_dbsql_100_stage.v_tradehistory th
           ON th.tradeid = t_id
         UNION ALL
         SELECT
@@ -119,29 +119,29 @@ FROM (
             WHEN cdc_flag = 'I' THEN TRUE 
             WHEN status IN ("Completed", "Canceled") THEN FALSE 
             ELSE cast(null as boolean) END AS create_flg
-        FROM {{ ref('TradeIncremental') }} t
+        FROM tobiko_cloud_tpcdi.tradeincremental t
       ) t
-      JOIN {{ ref('DimDate') }} dd
+      JOIN tobiko_cloud_tpcdi.dimdate dd
         ON date(t.t_dts) = dd.datevalue
-      JOIN {{ ref('DimTime') }} dt
+      JOIN tobiko_cloud_tpcdi.dimtime dt
         ON date_format(t.t_dts, 'HH:mm:ss') = dt.timevalue
     )
   )
   QUALIFY ROW_NUMBER() OVER (PARTITION BY tradeid ORDER BY t_dts desc) = 1
 ) trade
-JOIN {{ ref('StatusType') }} status
+JOIN tobiko_cloud_tpcdi.statustype status
   ON status.st_id = trade.t_st_id
-JOIN {{ ref('TradeType') }} tt
+JOIN tobiko_cloud_tpcdi.tradetype tt
   ON tt.tt_id == trade.t_tt_id
 -- Converts to LEFT JOIN if this is run as DQ EDITION. On some higher Scale Factors, a small number of Security symbols or Account IDs are missing from DimSecurity/DimAccount, causing audit check failures. 
 --${dq_left_flg} 
-LEFT JOIN {{ ref('DimSecurity') }} ds
+LEFT JOIN tobiko_cloud_tpcdi.dimsecurity ds
   ON 
     ds.symbol = trade.t_s_symb
     AND createdate >= ds.effectivedate 
     AND createdate < ds.enddate
 --${dq_left_flg} 
-LEFT JOIN {{ ref('DimAccount') }} da
+LEFT JOIN tobiko_cloud_tpcdi.dimaccount da
   ON 
     trade.t_ca_id = da.accountid 
     AND createdate >= da.effectivedate 

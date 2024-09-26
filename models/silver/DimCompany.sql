@@ -54,9 +54,9 @@ SELECT
       trim(substring(value, 324, 24)) AS Country,
       trim(substring(value, 348, 46)) AS CEOname,
       trim(substring(value, 394, 150)) AS Description
-    FROM {{ ref('FinWire') }}
+    FROM tobiko_cloud_tpcdi.finwire
     WHERE rectype = 'CMP'
        ) cmp
-  JOIN {{ ref('StatusType') }} st ON cmp.status = st.st_id
-  JOIN {{ ref('Industry') }} ind ON cmp.industryid = ind.in_id
+  JOIN tobiko_cloud_tpcdi.StatusType st ON cmp.status = st.st_id
+  JOIN tobiko_cloud_tpcdi.Industry ind ON cmp.industryid = ind.in_id
 )

@@ -46,7 +46,7 @@ LEFT JOIN tobiko_cloud_tpcdi.dimsecurity s
     s.symbol = fmh.dm_s_symb
     AND fmh.dm_date >= s.effectivedate 
     AND fmh.dm_date < s.enddate
-LEFT JOIN  tobiko_cloud_tpcdi.tempSumpFiBasicEps f 
+LEFT JOIN  tobiko_cloud_tpcdi.tempsumpfibasicseps f 
   ON 
     f.sk_companyid = s.sk_companyid
     AND quarter(fmh.dm_date) = quarter(fi_qtr_start_date)

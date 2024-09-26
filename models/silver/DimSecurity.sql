@@ -59,10 +59,10 @@ FROM (
         to_date(substring(value, 141, 8), 'yyyyMMdd') AS firsttradeonexchange,
         cast(substring(value, 149, 12) AS DOUBLE) AS Dividend,
         trim(substring(value, 161, 60)) AS conameorcik
-      FROM {{ ref('FinWire') }}
+      FROM tobiko_cloud_tpcdi.finwire
       WHERE rectype = 'SEC'
       ) fws
-    JOIN {{ ref('StatusType') }} s
+    JOIN tobiko_cloud_tpcdi.statustype s
       ON s.ST_ID = fws.status
     ) fws
   JOIN (
@@ -71,14 +71,14 @@ FROM (
       name conameorcik,
       EffectiveDate,
       EndDate
-    FROM {{ ref('DimCompany') }}
+    FROM tobiko_cloud_tpcdi.dimcompany
     UNION ALL
     SELECT 
       sk_companyid,
       cast(companyid as string) conameorcik,
       EffectiveDate,
       EndDate
-    FROM {{ ref('DimCompany') }}
+    FROM tobiko_cloud_tpcdi.dimcompany
   ) dc 
   ON
     fws.conameorcik = dc.conameorcik 

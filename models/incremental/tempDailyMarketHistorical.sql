@@ -16,9 +16,9 @@ SELECT
     ORDER BY dm_date ASC ROWS BETWEEN 364 PRECEDING AND CURRENT ROW
   ) fiftytwoweekhigh
 FROM (
-  SELECT * FROM tobiko_cloud_tpcdi.DailyMarketHistorical
+  SELECT * FROM tobiko_cloud_tpcdi.dailymarkethistorical
   UNION ALL
   SELECT * except(fiftytwoweekhigh, sk_fiftytwoweekhighdate, 
-  fiftytwoweeklow, sk_fiftytwoweeklowdate) FROM tobiko_cloud_tpcdi.DailyMarketIncremental dmh
+  fiftytwoweeklow, sk_fiftytwoweeklowdate) FROM tobiko_cloud_tpcdi.dailymarketincremental) dmh
 JOIN tobiko_cloud_tpcdi.dimdate d 
-  ON d.datevalue = dm_date)
+  ON d.datevalue = dm_date

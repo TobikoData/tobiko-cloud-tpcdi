@@ -48,7 +48,7 @@ FROM (
           status,
           update_ts,
           1 batchid
-        FROM {{ ref('CustomerMgmtView') }} c
+        FROM tobiko_cloud_tpcdi.customermgmtview c
         WHERE ActionType NOT IN ('UPDCUST', 'INACT')
         UNION ALL
         SELECT
@@ -60,8 +60,8 @@ FROM (
           st_name as status,
           TIMESTAMP(bd.batchdate) update_ts,
           a.batchid
-        FROM {{ ref('AccountIncremental') }} a
-        JOIN {{ ref('BatchDate') }} bd
+        FROM tobiko_cloud_tpcdi.accountincremental a
+        JOIN tobiko_cloud_tpcdi.batchdate bd
           ON a.batchid = bd.batchid
         JOIN tobiko_cloud_tpcdi.statustype st 
           ON a.status = st.st_id
@@ -69,11 +69,11 @@ FROM (
     ) a
     WHERE a.effectivedate < a.enddate
   ) a
-  FULL OUTER JOIN {{ ref('DimCustomerStg') }} c 
+  FULL OUTER JOIN tobiko_cloud_tpcdi.dimcustomerstg c 
     ON 
       a.customerid = c.customerid
       AND c.enddate > a.effectivedate
       AND c.effectivedate < a.enddate
 ) a
-LEFT JOIN {{ ref('DimBroker') }} b 
+LEFT JOIN tobiko_cloud_tpcdi.dimbroker b 
   ON a.brokerid = b.brokerid;

@@ -18,7 +18,7 @@ FROM (
     batchid
   FROM (
     SELECT * except(ct_name)
-    FROM tpcdi.tpcdi_raw_data_100_stage.v_cashtransactionhistory
+    FROM tpcdi.tpcdi_100_dbsql_100_stage.v_cashtransactionhistory
     UNION ALL
     SELECT * 
     FROM tobiko_cloud_tpcdi.cashtransactionincremental
@@ -30,7 +30,7 @@ FROM (
 JOIN tobiko_cloud_tpcdi.dimdate d 
   ON c.datevalue = d.datevalue
 -- Converts to LEFT JOIN if this is run as DQ EDITION. On some higher Scale Factors, a small number of Account IDs are missing from DimAccount, causing audit check failures. 
- LEFT JOIN tobiko_cloud_tpcdi.dimaccount 
+ LEFT JOIN tobiko_cloud_tpcdi.dimaccount a
   ON 
     c.accountid = a.accountid
     AND c.datevalue >= a.effectivedate 

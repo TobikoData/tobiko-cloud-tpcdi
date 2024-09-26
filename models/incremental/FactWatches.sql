@@ -34,9 +34,9 @@ FROM (
         wh.w_dts,
         batchid 
       FROM (
-        SELECT * FROM tpcdi.tpcdi_raw_data_100_stage.v_watchhistory
+        SELECT * FROM tpcdi.tpcdi_100_dbsql_100_stage.v_watchhistory
         UNION ALL
-        SELECT *  FROM tobiko_cloud_tpcdi.watchincremental wh
+        SELECT *  FROM tobiko_cloud_tpcdi.watchincremental) wh
       JOIN tobiko_cloud_tpcdi.dimdate d
         ON d.datevalue = date(wh.w_dts)))
   QUALIFY ROW_NUMBER() OVER (PARTITION BY customerid, symbol ORDER BY w_dts desc) = 1) wh
@@ -52,4 +52,4 @@ LEFT JOIN tobiko_cloud_tpcdi.dimacustomer c
   ON
     wh.customerid = c.customerid
     AND wh.dateplaced >= c.effectivedate 
-    AND wh.dateplaced < c.enddate)
+    AND wh.dateplaced < c.enddate

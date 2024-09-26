@@ -101,7 +101,7 @@ SELECT * FROM (
       1 batchid,
       update_ts,
       bigint(concat(date_format(update_ts, 'yyyyMMdd'), cast(customerid as string))) as sk_customerid
-    FROM {{ ref('CustomerMgmtView') }} c
+    FROM tobiko_cloud_tpcdi.customermgmtview c
     WHERE ActionType in ('NEW', 'INACT', 'UPDCUST')
     UNION ALL
     SELECT
@@ -131,10 +131,10 @@ SELECT * FROM (
       c.batchid,
       timestamp(bd.batchdate) update_ts,
       bigint(concat(date_format(update_ts, 'yyyyMMdd'), cast(customerid as string))) as sk_customerid
-    FROM {{ ref('CustomerIncremental') }} c
-    JOIN {{ ref('BatchDate') }} bd
+    FROM tobiko_cloud_tpcdi.customerincremental c
+    JOIN tobiko_cloud_tpcdi.batchdate bd
       ON c.batchid = bd.batchid
-    JOIN {{ ref('StatusType') }} s 
+    JOIN tobiko_cloud_tpcdi.statustype s 
       ON c.status = s.st_id
   ) c
   )

@@ -41,7 +41,7 @@ FROM (
       cast(substring(value, 161, 13) AS BIGINT) AS fi_out_basic,
       cast(substring(value, 174, 13) AS BIGINT) AS fi_out_dilut,
       trim(substring(value, 187, 60)) AS conameorcik
-    FROM {{ ref('FinWire') }}
+    FROM tobiko_cloud_tpcdi.finwire
     WHERE rectype = 'FIN'
   ) f 
 ) f
@@ -51,14 +51,14 @@ JOIN (
     name conameorcik,
     EffectiveDate,
     EndDate
-  FROM {{ ref('DimCompany') }}
+  FROM tobiko_cloud_tpcdi.dimcompany
   UNION ALL
   SELECT 
     sk_companyid,
     cast(companyid as string) conameorcik,
     EffectiveDate,
     EndDate
-  FROM {{ ref('DimCompany') }}
+  FROM tobiko_cloud_tpcdi.dimcompany
 ) dc 
 ON
   f.conameorcik = dc.conameorcik 
