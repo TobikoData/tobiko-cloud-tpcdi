@@ -1,15 +1,15 @@
-- name: tpcdi.tpcdi_raw_data_100.statustype
+- name: tpcdi.tpcdi_100_dbsql_100.statustype
   columns:
     st_id: string
     st_name: string
 
-- name: tpcdi.tpcdi_raw_data_100.taxrate
+- name: tpcdi.tpcdi_100_dbsql_100.taxrate
   columns: 
     tx_id: string
     tx_name: string
     tx_rate: float
 
-- name: tpcdi.tpcdi_raw_data_100.dimtime
+- name: tpcdi.tpcdi_100_dbsql_100.dimtime
   columns: 
     sk_timeid: bigint
     timevalue: string
@@ -22,7 +22,7 @@
     markethoursflag: boolean
     officehoursflag: boolean
 
-- name: tpcdi.tpcdi_raw_data_100.AccountIncrementaldos
+- name: tpcdi.tpcdi_100_dbsql_100.AccountIncrementaldos
   columns: 
     cdc_flag: string
     cdc_dsn: bigint
@@ -33,7 +33,7 @@
     taxstatus: tinyint
     ca_st_id: string
 
-- name: tpcdi.tpcdi_raw_data_100.AccountIncrementaltres
+- name: tpcdi.tpcdi_100_dbsql_100.AccountIncrementaltres
   columns:
     cdc_flag: string
     cdc_dsn: bigint
@@ -44,14 +44,14 @@
     taxstatus: tinyint
     ca_st_id: string
 
-- name: tpcdi.tpcdi_raw_data_100.CashTransactionHistory
+- name: tpcdi.tpcdi_100_dbsql_100.CashTransactionHistory
   columns:
     ct_ca_id: bigint
     ct_dts: timestamp
     ct_amt: double
     ct_name: string
 
-- name: tpcdi.tpcdi_raw_data_100.CashTransactionIncrementaldos
+- name: tpcdi.tpcdi_100_dbsql_100.CashTransactionIncrementaldos
   columns:
     cdc_flag: string 
     cdc_dsn: bigint
@@ -60,7 +60,7 @@
     ct_amt: double
     ct_name: string
 
-- name: tpcdi.tpcdi_raw_data_100.CashTransactionIncrementaltres
+- name: tpcdi.tpcdi_100_dbsql_100.CashTransactionIncrementaltres
   columns:
     cdc_flag: string 
     cdc_dsn: bigint
@@ -69,7 +69,7 @@
     ct_amt: double
     ct_name: string 
 
-- name: tpcdi.tpcdi_raw_data_100.customerincrementaldos
+- name: tpcdi.tpcdi_100_dbsql_100.customerincrementaldos
   columns:
     cdc_flag: string
     cdc_dsn: bigint
@@ -105,7 +105,7 @@
     lcl_tx_id: string
     nat_tx_id: string
 
-- name: tpcdi.tpcdi_raw_data_100.customerincrementaltres
+- name: tpcdi.tpcdi_100_dbsql_100.customerincrementaltres
   columns:
     cdc_flag: string
     cdc_dsn: bigint
@@ -141,7 +141,7 @@
     lcl_tx_id: string
     nat_tx_id: string
   
-- name: tpcdi.tpcdi_raw_data_100.DailyMarketHistorical
+- name: tpcdi.tpcdi_100_dbsql_100.DailyMarketHistorical
   columns:
     dm_date: date
     dm_s_symb: string
@@ -150,7 +150,7 @@
     dm_low: double
     dm_vol: int
 
-- name: tpcdi.tpcdi_raw_data_100.DailyMarketIncrementaldos
+- name: tpcdi.tpcdi_100_dbsql_100.DailyMarketIncrementaldos
   columns:
     cdc_flag: string
     cdc_dsn: bigint
@@ -161,7 +161,7 @@
     dm_low: double
     dm_vol: int
   
-- name: tpcdi.tpcdi_raw_data_100.DailyMarketIncrementaltres
+- name: tpcdi.tpcdi_100_dbsql_100.DailyMarketIncrementaltres
   columns:
     cdc_flag: string
     cdc_dsn: bigint
@@ -172,7 +172,7 @@
     dm_low: double
     dm_vol: int
 
-- name: tpcdi.tpcdi_raw_data_100.dimdate
+- name: tpcdi.tpcdi_100_dbsql_100.dimdate
   columns:
     sk_dateid: bigint
     datevalue: date
@@ -193,7 +193,7 @@
     fiscalqtrdesc: string
     holidayflag: boolean
 
-- name: tpcdi.tpcdi_raw_data_100.HR
+- name: tpcdi.tpcdi_100_dbsql_100.HR
   columns:
     employeeid: string
     managerid: string
@@ -205,14 +205,14 @@
     employeeoffice: string
     employeephone: string
 
-- name: tpcdi.tpcdi_raw_data_100.HoldingHistory
+- name: tpcdi.tpcdi_100_dbsql_100.HoldingHistory
   columns:
     hh_h_t_id: int
     hh_t_id: int
     hh_before_qty: int
     hh_after_qty: int
 
-- name: tpcdi.tpcdi_raw_data_100.HoldingIncrementaldos
+- name: tpcdi.tpcdi_100_dbsql_100.HoldingIncrementaldos
   columns:
     cdc_flag: string
     cdc_dsn: bigint
@@ -221,7 +221,7 @@
     hh_before_qty: int
     hh_after_qty: int
 
-- name: tpcdi.tpcdi_raw_data_100.HoldingIncrementaltres
+- name: tpcdi.tpcdi_100_dbsql_100.HoldingIncrementaltres
   columns:
     cdc_flag: string
     cdc_dsn: bigint
@@ -230,21 +230,21 @@
     hh_before_qty: int
     hh_after_qty: int
 
-- name: tpcdi.tpcdi_raw_data_100.BatchDateuno
+- name: tpcdi.tpcdi_100_dbsql_100.BatchDateuno
   columns:
     batchdate: date
 
-- name: tpcdi.tpcdi_raw_data_100.BatchDatetres
+- name: tpcdi.tpcdi_100_dbsql_100.BatchDatetres
   columns:
     batchdate: date
 
-- name: tpcdi.tpcdi_raw_data_100.Industry
+- name: tpcdi.tpcdi_100_dbsql_100.Industry
   columns:
     in_id: string
     in_name: string
     in_sc_id: string
 
-- name: tpcdi.tpcdi_raw_data_100.TradeHistory
+- name: tpcdi.tpcdi_100_dbsql_100.TradeHistory
   columns:
     t_id: bigint
     t_dts: timestamp
@@ -261,13 +261,13 @@
     t_comm: double
     t_tax: double
 
-- name: tpcdi.tpcdi_raw_data_100.TradeHistoryRaw
+- name: tpcdi.tpcdi_100_dbsql_100.TradeHistoryRaw
   columns:
     th_t_id: bigint
     th_dts: timestamp
     th_st_id: string
 
-- name: tpcdi.tpcdi_raw_data_100.TradeInrementaldos
+- name: tpcdi.tpcdi_100_dbsql_100.TradeInrementaldos
   columns:
     cdc_flag: string
     cdc_dsn: bigint
@@ -286,7 +286,7 @@
     t_comm: double
     t_tax: double
 
-- name: tpcdi.tpcdi_raw_data_100.TradeInrementaltres
+- name: tpcdi.tpcdi_100_dbsql_100.TradeInrementaltres
   columns:
     cdc_flag: string
     cdc_dsn: bigint
@@ -305,14 +305,14 @@
     t_comm: double
     t_tax: double
 
-- name: tpcdi.tpcdi_raw_data_100.TradeType
+- name: tpcdi.tpcdi_100_dbsql_100.TradeType
   columns:
     tt_id: string
     tt_name: string
     tt_is_sell: int
     tt_is_mrkt: int
 
-- name: tpcdi.tpcdi_raw_data_100.WatchIncrementaldos
+- name: tpcdi.tpcdi_100_dbsql_100.WatchIncrementaldos
   columns:
     cdc_flag: string
     cdc_dsn: bigint
@@ -321,7 +321,7 @@
     w_dts: timestamp
     w_action: string
 
-- name: tpcdi.tpcdi_raw_data_100.WatchIncrementaltres
+- name: tpcdi.tpcdi_100_dbsql_100.WatchIncrementaltres
   columns:
     cdc_flag: string
     cdc_dsn: bigint
@@ -330,17 +330,17 @@
     w_dts: timestamp
     w_action: string
 
-- name: tpcdi.tpcdi_raw_data_100.WatchHistory
+- name: tpcdi.tpcdi_100_dbsql_100.WatchHistory
   columns:
     w_c_id: bigint
     w_s_symb: string
     w_dts: timestamp
     w_action: string
 
-- name: tpcdi.tpcdi_raw_data_100.FinWireStg
+- name: tpcdi.tpcdi_100_dbsql_100.FinWireStg
   columns:
 
-- name: tpcdi.tpcdi_raw_data_100.ProspectRawuno
+- name: tpcdi.tpcdi_100_dbsql_100.ProspectRawuno
   columns:
     agencyid: string
     lastname: string
@@ -365,7 +365,7 @@
     numbercreditcards: int
     networth: int
 
-- name: tpcdi.tpcdi_raw_data_100.ProspectRawdos
+- name: tpcdi.tpcdi_100_dbsql_100.ProspectRawdos
   columns:
     agencyid: string
     lastname: string
@@ -390,7 +390,7 @@
     numbercreditcards: int
     networth: int
 
-- name: tpcdi.tpcdi_raw_data_100.ProspectRawtres
+- name: tpcdi.tpcdi_100_dbsql_100.ProspectRawtres
   columns:
     agencyid: string
     lastname: string

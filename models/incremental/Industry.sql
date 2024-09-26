@@ -4,6 +4,6 @@ MODEL (
 );
 
 select *
-from tpcdi.tpcdi_raw_data_100.industry
+from tpcdi.tpcdi_100_dbsql_100.industry
 ;
 
