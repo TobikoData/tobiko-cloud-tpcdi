@@ -37,12 +37,12 @@ SELECT
   c.batchid,
   c.effectivedate,
   c.enddate
-FROM {{ ref('DimCustomerStg') }} c
-LEFT JOIN {{ ref('TaxRate') }} r_lcl 
+FROM tobiko_cloud_tpcdi.DimCustomerStg c
+LEFT JOIN tobiko_cloud_tpcdi.TaxRate r_lcl 
   ON c.LCL_TX_ID = r_lcl.TX_ID
-LEFT JOIN {{ ref('TaxRate') }} r_nat 
+LEFT JOIN tobiko_cloud_tpcdi.TaxRate r_nat 
   ON c.NAT_TX_ID = r_nat.TX_ID
-LEFT JOIN {{ ref('Prospect') }} p 
+LEFT JOIN tobiko_cloud_tpcdi.prospect p 
   on upper(p.lastname) = upper(c.lastname)
   and upper(p.firstname) = upper(c.firstname)
   and upper(p.addressline1) = upper(c.addressline1)

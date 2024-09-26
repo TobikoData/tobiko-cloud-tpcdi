@@ -64,7 +64,7 @@ FROM (
         JOIN {{ ref('BatchDate') }} bd
           ON a.batchid = bd.batchid
         JOIN tobiko_cloud_tpcdi.statustype st 
-          ON a.customerid = st.st_id
+          ON a.status = st.st_id
       ) a
     ) a
     WHERE a.effectivedate < a.enddate

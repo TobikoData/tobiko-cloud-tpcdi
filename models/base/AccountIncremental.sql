@@ -1,6 +1,6 @@
 MODEL (
-  name tobiko_cloud_tpcdi.v_accountincremental,
-  kind FULL,
+  name tobiko_cloud_tpcdi.accountincremental,
+  kind VIEW,
 );
 
 select

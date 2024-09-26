@@ -1,7 +1,7 @@
 MODEL (
   name tobiko_cloud_tpcdi.factwatches,
   kind FULL,
-
+);
 
 SELECT
   c.sk_customerid sk_customerid,
@@ -34,22 +34,22 @@ FROM (
         wh.w_dts,
         batchid 
       FROM (
-        SELECT * FROM {{ source('tpcdi', 'v_watchhistory') }}
+        SELECT * FROM tpcdi.tpcdi_raw_data_100_stage.v_watchhistory
         UNION ALL
-        SELECT *  FROM {{ ref('WatchIncremental') }}) wh
-      JOIN {{ ref('DimDate') }} d
+        SELECT *  FROM tobiko_cloud_tpcdi.watchincremental wh
+      JOIN tobiko_cloud_tpcdi.dimdate d
         ON d.datevalue = date(wh.w_dts)))
   QUALIFY ROW_NUMBER() OVER (PARTITION BY customerid, symbol ORDER BY w_dts desc) = 1) wh
 -- Converts to LEFT JOINs if this is run as DQ EDITION. On some higher Scale Factors, a small number of Security symbols or Customer IDs "may" be missing from DimSecurity/DimCustomer, causing audit check failures. 
 --${dq_left_flg} 
-LEFT JOIN {{ ref('DimSecurity') }} s 
+LEFT JOIN tobiko_cloud_tpcdi.dimsecurity s 
   ON 
     s.symbol = wh.symbol
     AND wh.dateplaced >= s.effectivedate 
     AND wh.dateplaced < s.enddate
 --${dq_left_flg} 
-LEFT JOIN {{ ref('DimCustomer') }} c 
+LEFT JOIN tobiko_cloud_tpcdi.dimacustomer c 
   ON
     wh.customerid = c.customerid
     AND wh.dateplaced >= c.effectivedate 
-    AND wh.dateplaced < c.enddate;
+    AND wh.dateplaced < c.enddate)

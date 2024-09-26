@@ -84,7 +84,7 @@ FROM (
       numbercreditcards,
       networth,
       min(batchid) batchid
-    FROM {{ ref('ProspectRaw') }} p
+    FROM tobiko_cloud_tpcdi.prospectraw p
     GROUP BY
       agencyid,
       lastname,
@@ -113,16 +113,16 @@ JOIN (
   SELECT 
     sk_dateid,
     batchid
-  FROM {{ ref('BatchDate') }} b 
-  JOIN {{ ref('DimDate') }} d 
+  FROM tobiko_cloud_tpcdi.batchdate b 
+  JOIN tobiko_cloud_tpcdi.dimdate d 
     ON b.batchdate = d.datevalue) recdate
   ON p.recordbatchid = recdate.batchid
 JOIN (
   SELECT 
     sk_dateid,
     batchid
-  FROM {{ ref('BatchDate') }} b 
-  JOIN {{ ref('DimDate') }} d 
+  FROM tobiko_cloud_tpcdi.batchdate b 
+  JOIN tobiko_cloud_tpcdi.dimdate d 
     ON b.batchdate = d.datevalue) origdate
   ON p.batchid = origdate.batchid
 LEFT JOIN (
@@ -133,7 +133,7 @@ LEFT JOIN (
     addressline1,
     addressline2,
     postalcode
-  FROM {{ ref('DimCustomerStg') }}
+  FROM tobiko_cloud_tpcdi.dimcustomerstg
   WHERE iscurrent) c
   ON 
     upper(p.LastName) = upper(c.lastname)

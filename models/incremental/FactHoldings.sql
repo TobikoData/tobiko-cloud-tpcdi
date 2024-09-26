@@ -19,11 +19,11 @@ SELECT
 FROM (
   SELECT 
     *
-  FROM {{ source('tpcdi', 'v_holdinghistory') }}
+  FROM tpcdi.tpcdi_raw_data_100_stage.v_holdinghistory
   UNION ALL
   SELECT * except(cdc_flag, cdc_dsn)
-  FROM {{ ref('HoldingIncremental') }}) hh
+  FROM tobiko_cloud_tpcdi.holdingincremental hh
 -- Converts to LEFT JOIN if this is run as DQ EDITION. It is possible, because of the issues upstream with DimSecurity/DimAccount on "some" scale factors, that DimTrade may be missing some rows.
 --${dq_left_flg}
- LEFT JOIN {{ ref('DimTrade') }} dt
-  ON tradeid = hh_t_id
+ LEFT JOIN tobiko_cloud_tpcdi.dimtrade dt
+  ON tradeid = hh_t_id)

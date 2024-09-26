@@ -1,6 +1,6 @@
 MODEL (
   name tobiko_cloud_tpcdi.cashtransactionincremental,
-  kind FULL,
+  kind VIEW,
 );
 
 select
