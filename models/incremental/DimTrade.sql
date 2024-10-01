@@ -1,6 +1,9 @@
 MODEL (
   name tobiko_cloud_tpcdi.dimtrade,
   kind FULL,
+  audits (
+    NOT_NULL(columns = (sk_securityid, sk_accountid))
+)
 );
 
 SELECT

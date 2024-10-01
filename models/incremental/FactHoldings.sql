@@ -1,6 +1,9 @@
 MODEL (
   name tobiko_cloud_tpcdi.factholdings,
   kind FULL,
+  audits (
+    NOT_NULL(columns = (currentprice))
+)
 );
 
 

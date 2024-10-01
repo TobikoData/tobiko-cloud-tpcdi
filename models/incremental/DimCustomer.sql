@@ -1,6 +1,10 @@
 MODEL (
   name tobiko_cloud_tpcdi.dimacustomer,
   kind FULL,
+  audits (
+    NOT_NULL(columns = (tier)),
+    ACCEPTED_VALUES(column = tier, is_in=('1', '2', '3'))
+)
 );
 
 SELECT 

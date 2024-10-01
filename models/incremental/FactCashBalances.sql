@@ -1,6 +1,9 @@
 MODEL (
   name tobiko_cloud_tpcdi.factcashbalances,
   kind FULL,
+  audits (
+    NOT_NULL(columns = (sk_accountid))
+)
 );
 
 
