@@ -2,12 +2,14 @@ MODEL (
   name tobiko_cloud_tpcdi.dimacustomer,
   kind FULL,
   audits (
-    NOT_NULL(columns = (tier)),
-    ACCEPTED_VALUES(column = tier, is_in=('1', '2', '3'))
-)
+    NOT_NULL(columns = (
+      tier
+    )),
+    ACCEPTED_VALUES(column = tier, is_in = ('1', '2', '3'))
+  )
 );
 
-SELECT 
+SELECT
   c.sk_customerid,
   c.customerid,
   c.taxid,
@@ -15,7 +17,7 @@ SELECT
   c.lastname,
   c.firstname,
   c.middleinitial,
-  if(c.gender IN ('M', 'F'), c.gender, 'U') gender,
+  IF(c.gender IN ('M', 'F'), c.gender, 'U') AS gender,
   c.tier,
   c.dob,
   c.addressline1,
@@ -29,10 +31,10 @@ SELECT
   c.phone3,
   c.email1,
   c.email2,
-  r_nat.TX_NAME as nationaltaxratedesc,
-  r_nat.TX_RATE as nationaltaxrate,
-  r_lcl.TX_NAME as localtaxratedesc,
-  r_lcl.TX_RATE as localtaxrate,
+  r_nat.TX_NAME AS nationaltaxratedesc,
+  r_nat.TX_RATE AS nationaltaxrate,
+  r_lcl.TX_NAME AS localtaxratedesc,
+  r_lcl.TX_RATE AS localtaxrate,
   p.agencyid,
   p.creditrating,
   p.networth,
@@ -41,14 +43,14 @@ SELECT
   c.batchid,
   c.effectivedate,
   c.enddate
-FROM tobiko_cloud_tpcdi.DimCustomerStg c
-LEFT JOIN tobiko_cloud_tpcdi.TaxRate r_lcl 
+FROM tobiko_cloud_tpcdi.DimCustomerStg AS c
+LEFT JOIN tobiko_cloud_tpcdi.TaxRate AS r_lcl
   ON c.LCL_TX_ID = r_lcl.TX_ID
-LEFT JOIN tobiko_cloud_tpcdi.TaxRate r_nat 
+LEFT JOIN tobiko_cloud_tpcdi.TaxRate AS r_nat
   ON c.NAT_TX_ID = r_nat.TX_ID
-LEFT JOIN tobiko_cloud_tpcdi.prospect p 
-  on upper(p.lastname) = upper(c.lastname)
-  and upper(p.firstname) = upper(c.firstname)
-  and upper(p.addressline1) = upper(c.addressline1)
-  and upper(nvl(p.addressline2, '')) = upper(nvl(c.addressline2, ''))
-  and upper(p.postalcode) = upper(c.postalcode);
+LEFT JOIN tobiko_cloud_tpcdi.prospect AS p
+  ON UPPER(p.lastname) = UPPER(c.lastname)
+  AND UPPER(p.firstname) = UPPER(c.firstname)
+  AND UPPER(p.addressline1) = UPPER(c.addressline1)
+  AND UPPER(COALESCE(p.addressline2, '')) = UPPER(COALESCE(c.addressline2, ''))
+  AND UPPER(p.postalcode) = UPPER(c.postalcode)

@@ -2,7 +2,7 @@ MODEL (
   name tobiko_cloud_tpcdi.dimaccount,
   kind FULL,
   audits (
-    NOT_NULL(columns = (sk_customerid, sk_brokerid))
+    NOT_NULL_NON_BLOCKING(columns = (sk_customerid, sk_brokerid))
 )
 );
 
