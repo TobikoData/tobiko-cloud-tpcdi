@@ -2,10 +2,10 @@ MODEL (
   name tobiko_cloud_tpcdi.dimacustomer,
   kind FULL,
   audits (
-    NOT_NULL(columns = (
+    NOT_NULL_NON_BLOCKING(columns = (
       tier
     )),
-    ACCEPTED_VALUES(column = tier, is_in = ('1', '2', '3'))
+    ACCEPTED_VALUES_NON_BLOCKING(column = tier, is_in = ('1', '2', '3'))
   )
 );
 

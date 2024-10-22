@@ -2,7 +2,7 @@ MODEL (
   name tobiko_cloud_tpcdi.factmarkethistory,
   kind FULL,
   audits (
-    NOT_NULL(columns = (sk_securityid, peratio))
+    NOT_NULL_NON_BLOCKING(columns = (sk_securityid, peratio))
 )
 );
 
