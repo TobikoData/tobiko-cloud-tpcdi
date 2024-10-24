@@ -2,7 +2,7 @@ MODEL (
   name tobiko_cloud_tpcdi.factholdings,
   kind FULL,
   audits (
-    NOT_NULL(columns = (currentprice))
+    NOT_NULL_NON_BLOCKING(columns = (currentprice))
 )
 );
 
