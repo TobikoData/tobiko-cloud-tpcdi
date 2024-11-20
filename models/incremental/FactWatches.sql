@@ -51,7 +51,7 @@ LEFT JOIN tobiko_cloud_tpcdi.dimsecurity s
     AND wh.dateplaced >= s.effectivedate 
     AND wh.dateplaced < s.enddate
 --${dq_left_flg} 
-LEFT JOIN tobiko_cloud_tpcdi.dimacustomer c 
+LEFT JOIN tobiko_cloud_tpcdi.dimcustomer c 
   ON
     wh.customerid = c.customerid
     AND wh.dateplaced >= c.effectivedate 

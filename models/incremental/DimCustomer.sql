@@ -1,5 +1,5 @@
 MODEL (
-  name tobiko_cloud_tpcdi.dimacustomer,
+  name tobiko_cloud_tpcdi.dimcustomer,
   kind FULL,
   audits (
     NOT_NULL_NON_BLOCKING(columns = (

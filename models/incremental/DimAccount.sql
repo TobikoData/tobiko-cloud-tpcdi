@@ -17,7 +17,8 @@ SELECT
   a.batchid,
   a.effectivedate,
   bigint(concat(date_format(a.effectivedate, 'yyyyMMdd'), cast(a.accountid as string))) as sk_accountid,
-  a.enddate
+  a.enddate,
+  '13' as new_column
 FROM (
   SELECT
     a.* except(effectivedate, enddate, customerid),
