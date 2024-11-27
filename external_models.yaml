@@ -1,23 +1,279 @@
-- name: tpcdi.tpcdi_raw_data_100.statustype
+- name: '`tpcdi`.`tpcdi_100_dbsql_100`.`dailymarkethistorical`'
   columns:
-    st_id: string
-    st_name: string
-
-- name: tpcdi.tpcdi_raw_data_100.taxrate
-  columns: 
-    tx_id: string
-    tx_name: string
-    tx_rate: float
-
-- name: tpcdi.tpcdi_raw_data_100.dimtime
-  columns: 
-    sk_timeid: bigint
-    timevalue: string
-    hourid: int
-    hourdesc: string
-    minuteid: int
-    minutedesc: int
-    secondid: int
-    seconddesc: int
-    markethoursflag: boolean
-    officehoursflag: boolean
+    dm_date: DATE
+    dm_s_symb: STRING
+    dm_close: DOUBLE
+    dm_high: DOUBLE
+    dm_low: DOUBLE
+    dm_vol: INT
+    batchid: INT
+- name: '`tpcdi`.`tpcdi_100_dbsql_100`.`dimdate`'
+  columns:
+    sk_dateid: BIGINT
+    datevalue: DATE
+    datedesc: STRING
+    calendaryearid: INT
+    calendaryeardesc: STRING
+    calendarqtrid: INT
+    calendarqtrdesc: STRING
+    calendarmonthid: INT
+    calendarmonthdesc: STRING
+    calendarweekid: INT
+    calendarweekdesc: STRING
+    dayofweeknum: INT
+    dayofweekdesc: STRING
+    fiscalyearid: INT
+    fiscalyeardesc: STRING
+    fiscalqtrid: INT
+    fiscalqtrdesc: STRING
+    holidayflag: BOOLEAN
+- name: '`tpcdi`.`tpcdi_100_dbsql_100`.`dimtime`'
+  columns:
+    sk_timeid: BIGINT
+    timevalue: STRING
+    hourid: INT
+    hourdesc: STRING
+    minuteid: INT
+    minutedesc: INT
+    secondid: INT
+    seconddesc: INT
+    markethoursflag: BOOLEAN
+    officehoursflag: BOOLEAN
+- name: '`tpcdi`.`tpcdi_100_dbsql_100`.`industry`'
+  columns:
+    in_id: STRING
+    in_name: STRING
+    in_sc_id: STRING
+- name: '`tpcdi`.`tpcdi_100_dbsql_100`.`statustype`'
+  columns:
+    st_id: STRING
+    st_name: STRING
+- name: '`tpcdi`.`tpcdi_100_dbsql_100`.`taxrate`'
+  columns:
+    tx_id: STRING
+    tx_name: STRING
+    tx_rate: FLOAT
+- name: '`tpcdi`.`tpcdi_100_dbsql_100`.`tradetype`'
+  columns:
+    tt_id: STRING
+    tt_name: STRING
+    tt_is_sell: INT
+    tt_is_mrkt: INT
+- name: '`tpcdi`.`tpcdi_100_dbsql_100_stage`.`customermgmt`'
+  columns:
+    customerid: BIGINT
+    accountid: BIGINT
+    brokerid: BIGINT
+    taxid: STRING
+    accountdesc: STRING
+    taxstatus: TINYINT
+    status: STRING
+    lastname: STRING
+    firstname: STRING
+    middleinitial: STRING
+    gender: STRING
+    tier: TINYINT
+    dob: DATE
+    addressline1: STRING
+    addressline2: STRING
+    postalcode: STRING
+    city: STRING
+    stateprov: STRING
+    country: STRING
+    phone1: STRING
+    phone2: STRING
+    phone3: STRING
+    email1: STRING
+    email2: STRING
+    lcl_tx_id: STRING
+    nat_tx_id: STRING
+    update_ts: TIMESTAMP
+    ActionType: STRING
+- name: '`tpcdi`.`tpcdi_100_dbsql_100_stage`.`v_accountincremental`'
+  columns:
+    accountid: BIGINT
+    brokerid: BIGINT
+    customerid: BIGINT
+    accountDesc: STRING
+    taxstatus: TINYINT
+    status: STRING
+    batchid: INT
+- name: '`tpcdi`.`tpcdi_100_dbsql_100_stage`.`v_batchdate`'
+  columns:
+    batchdate: DATE
+    batchid: INT
+- name: '`tpcdi`.`tpcdi_100_dbsql_100_stage`.`v_cashtransactionhistory`'
+  columns:
+    ct_ca_id: INT
+    ct_dts: TIMESTAMP
+    ct_amt: DOUBLE
+    ct_name: STRING
+    batchid: INT
+- name: '`tpcdi`.`tpcdi_100_dbsql_100_stage`.`v_cashtransactionincremental`'
+  columns:
+    accountid: BIGINT
+    datevalue: DATE
+    cash: DOUBLE
+    batchid: INT
+- name: '`tpcdi`.`tpcdi_100_dbsql_100_stage`.`v_customerincremental`'
+  columns:
+    customerid: BIGINT
+    taxid: STRING
+    status: STRING
+    lastname: STRING
+    firstname: STRING
+    middleinitial: STRING
+    gender: STRING
+    tier: TINYINT
+    dob: DATE
+    addressline1: STRING
+    addressline2: STRING
+    postalcode: STRING
+    city: STRING
+    stateprov: STRING
+    country: STRING
+    phone1: STRING
+    phone2: STRING
+    phone3: STRING
+    email1: STRING
+    email2: STRING
+    lcl_tx_id: STRING
+    nat_tx_id: STRING
+    batchid: INT
+- name: '`tpcdi`.`tpcdi_100_dbsql_100_stage`.`v_dailymarkethistorical`'
+  columns:
+    dm_date: DATE
+    dm_s_symb: STRING
+    dm_close: DOUBLE
+    dm_high: DOUBLE
+    dm_low: DOUBLE
+    dm_vol: INT
+    batchid: INT
+- name: '`tpcdi`.`tpcdi_100_dbsql_100_stage`.`v_dailymarketincremental`'
+  columns:
+    dm_date: DATE
+    dm_s_symb: STRING
+    dm_close: DOUBLE
+    dm_high: DOUBLE
+    dm_low: DOUBLE
+    dm_vol: INT
+    batchid: INT
+    fiftytwoweekhigh: DOUBLE
+    sk_fiftytwoweekhighdate: BIGINT
+    fiftytwoweeklow: DOUBLE
+    sk_fiftytwoweeklowdate: BIGINT
+- name: '`tpcdi`.`tpcdi_100_dbsql_100_stage`.`v_finwire`'
+  columns:
+    rectype: STRING
+    recdate: DATE
+    value: STRING
+- name: '`tpcdi`.`tpcdi_100_dbsql_100_stage`.`v_holdinghistory`'
+  columns:
+    hh_h_t_id: INT
+    hh_t_id: INT
+    hh_before_qty: INT
+    hh_after_qty: INT
+    batchid: INT
+- name: '`tpcdi`.`tpcdi_100_dbsql_100_stage`.`v_holdingincremental`'
+  columns:
+    cdc_flag: STRING
+    cdc_dsn: INT
+    hh_h_t_id: INT
+    hh_t_id: INT
+    hh_before_qty: INT
+    hh_after_qty: INT
+    batchid: INT
+- name: '`tpcdi`.`tpcdi_100_dbsql_100_stage`.`v_hr`'
+  columns:
+    employeeid: BIGINT
+    managerid: BIGINT
+    employeefirstname: STRING
+    employeelastname: STRING
+    employeemi: STRING
+    employeejobcode: INT
+    employeebranch: STRING
+    employeeoffice: STRING
+    employeephone: STRING
+- name: '`tpcdi`.`tpcdi_100_dbsql_100_stage`.`v_prospect`'
+  columns:
+    agencyid: STRING
+    lastname: STRING
+    firstname: STRING
+    middleinitial: STRING
+    gender: STRING
+    addressline1: STRING
+    addressline2: STRING
+    postalcode: STRING
+    city: STRING
+    state: STRING
+    country: STRING
+    phone: STRING
+    income: BIGINT
+    numbercars: INT
+    numberchildren: INT
+    maritalstatus: STRING
+    age: INT
+    creditrating: INT
+    ownorrentflag: STRING
+    employer: STRING
+    numbercreditcards: INT
+    networth: INT
+    marketingnameplate: STRING
+    recordbatchid: INT
+    batchid: INT
+- name: '`tpcdi`.`tpcdi_100_dbsql_100_stage`.`v_trade`'
+  columns:
+    t_id: BIGINT
+    t_dts: TIMESTAMP
+    t_st_id: STRING
+    t_tt_id: STRING
+    t_is_cash: TINYINT
+    t_s_symb: STRING
+    quantity: INT
+    bidprice: DOUBLE
+    t_ca_id: BIGINT
+    executedby: STRING
+    tradeprice: DOUBLE
+    fee: DOUBLE
+    commission: DOUBLE
+    tax: DOUBLE
+    batchid: INT
+- name: '`tpcdi`.`tpcdi_100_dbsql_100_stage`.`v_tradehistory`'
+  columns:
+    tradeid: BIGINT
+    th_dts: TIMESTAMP
+    status: STRING
+- name: '`tpcdi`.`tpcdi_100_dbsql_100_stage`.`v_tradeincremental`'
+  columns:
+    cdc_flag: STRING
+    tradeid: BIGINT
+    t_dts: TIMESTAMP
+    create_ts: TIMESTAMP
+    close_ts: TIMESTAMP
+    status: STRING
+    type: STRING
+    cashflag: BOOLEAN
+    t_s_symb: STRING
+    quantity: INT
+    bidprice: DOUBLE
+    t_ca_id: BIGINT
+    executedby: STRING
+    tradeprice: DOUBLE
+    fee: DOUBLE
+    commission: DOUBLE
+    tax: DOUBLE
+    batchid: INT
+- name: '`tpcdi`.`tpcdi_100_dbsql_100_stage`.`v_watchhistory`'
+  columns:
+    w_c_id: BIGINT
+    w_s_symb: STRING
+    w_dts: TIMESTAMP
+    w_action: STRING
+    batchid: INT
+- name: '`tpcdi`.`tpcdi_100_dbsql_100_stage`.`v_watchincremental`'
+  columns:
+    w_c_id: BIGINT
+    w_s_symb: STRING
+    w_dts: TIMESTAMP
+    w_action: STRING
+    batchid: INT
