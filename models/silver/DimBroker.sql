@@ -15,7 +15,7 @@ SELECT
   employeebranch branch,
   employeeoffice office,
   employeephone phone,
-  true iscurrent,
+  false iscurrent,
   1 batchid,
   (SELECT min(to_date(datevalue)) as effectivedate FROM tobiko_cloud_tpcdi.DimDate) effectivedate,
   date('9999-12-31') enddate,
