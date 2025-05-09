@@ -1,0 +1,6 @@
+projects:
+    databricks-dev:
+        url: https://cloud.tobikodata.com/sqlmesh/databricks/dev/
+        gateway: tobiko-cloud
+        extras: web,github,databricks
+default_project: databricks-dev

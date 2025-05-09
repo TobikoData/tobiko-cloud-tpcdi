@@ -16,7 +16,7 @@ SELECT
   employeeoffice office,
   employeephone phone,
   true iscurrent,
-  0 batchid,
+  1 batchid,
   (SELECT min(to_date(datevalue)) as effectivedate FROM tobiko_cloud_tpcdi.DimDate) effectivedate,
   date('9999-12-31') enddate,
   bigint(concat(date_format(enddate, 'yyyyMMdd'), cast(brokerid as string))) as sk_brokerid
