@@ -1,5 +1,8 @@
 gateways:
   tobiko-cloud:
+      scheduler:
+        type: cloud
+        default_catalog: tpcdi
       connection:
         type: databricks
         server_hostname: "{{ env_var('DATABRICKS_TEST_HOST') }}"
