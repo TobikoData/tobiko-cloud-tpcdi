@@ -42,7 +42,8 @@ SELECT
   c.iscurrent,
   c.batchid,
   c.effectivedate,
-  c.enddate
+  c.enddate,
+  1 as new_column
 FROM tobiko_cloud_tpcdi.DimCustomerStg AS c
 LEFT JOIN tobiko_cloud_tpcdi.TaxRate AS r_lcl
   ON c.LCL_TX_ID = r_lcl.TX_ID

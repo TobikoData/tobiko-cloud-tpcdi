@@ -31,7 +31,7 @@ def execute(
           .withColumn("is_hnwi", F.col("networth") > 1_000_000)
           .select(
               F.col("customerid"),
-              F.concat_ws(" ", F.col("firstname"), F.col("lastname")).alias("full_name"),
+              F.concat_ws(" ", F.col("firstname"), F.col("lastname")).alias("fullname"),
               "status",
               "networth",
               "is_hnwi"
