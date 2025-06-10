@@ -18,4 +18,12 @@ model_defaults:
 variables:
   raw_schema: tpcdi_100_dbsql_100
   catalog: tpcdi
-  
+
+
+# Linting rules to enforce standards for your team
+linter:
+  enabled: true
+  # error if ["ambiguousorinvalidcolumn", "invalidselectstarexpansion"] rules violated
+  rules: ["ambiguousorinvalidcolumn", "invalidselectstarexpansion"]
+  # warn_rules: ["noselectstar"]
+  # ignored_rules: ["noselectstar"]
